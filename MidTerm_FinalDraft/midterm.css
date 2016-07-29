@@ -1,0 +1,130 @@
+
+body {
+  background-image: url(rrx.jpg);
+  background-size:auto;
+}
+
+#headBar {
+  height: 146px;
+  background-color: rgb(222, 222, 222);
+  opacity: 0.8;
+  border-bottom: 2px solid rgb(143, 143, 143) ;
+  border-radius: 10px;
+}
+img#logo {
+  height: 120px;
+  float: right;
+  -webkit-filter: contrast(173%);
+  margin: 21px
+}
+#logoText {
+  font-family: 'Monoton', cursive;
+  font-size: 4.9em;
+  position: absolute;
+  padding: 27px;
+  top: -1px
+}
+
+#subText {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 27px;
+  position: relative;
+  bottom: -73px;
+  left: 611px;
+  color: black;
+  opacity: .9
+
+}
+#searchBar {
+  background-color: rgba(222, 222, 222, .7);
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  top: -8px
+
+}
+
+#inputBar {
+  width: 500px;
+  background-color: rgba(219, 237, 224, 1);
+  position: relative;
+  left: 60px;
+  bottom: -4px
+}
+button.btn.btn-default {
+  position: relative;
+  left: 64px;
+  opacity: .9;
+  top: 3px
+}
+.container {
+  position: relative
+}
+#searchText {
+  padding-right: 5px;
+  top: 17px;
+  position: absolute;
+  font-family: 'Paytone One', sans-serif;
+  opacity: .89
+}
+
+#mainBody {
+  height: 700px;
+  background-color: rgba(219, 237, 224, 0.6);
+  border-radius: 15px 15px 0px 0px;
+  border-top: 2px solid rgba(143, 143, 143, 0.64) ;
+
+}
+#footer {
+  height: 200px;
+  background-color: rgba(62, 62, 62, 0.98);
+  border-radius: 0px 0px 8px 8px
+}
+.results {
+  background-color: rgba(222,222,222,.7);
+  bottom: 496px;
+  border: 1px solid grey;
+  width: 489px;
+  margin: 5px;
+  bottom: 620px;
+  border-radius: 10px;
+  height: 109px;
+  right: -7px;
+  list-style:none;
+  bottom: 985px
+}
+.resultsList {
+  position: absolute;
+  right: 5px;
+  top: 249px
+}
+
+.pagination {
+  position: absolute;
+  bottom: -57px;
+  right: 128px;
+}
+.map {
+  padding: 20px;
+  position: relative;
+}
+/*
+ng-map {
+  height: 620px;
+  width: 800px;
+  border-radius: 8px;
+  border: solid rgb(163, 98, 0) 3px;
+  display: inline-block
+}*/
+
+/*
+.sidebar {
+  width: 600px;
+  height: 620px;
+  border: solid rgb(34, 21, 0) 3px;
+  left: 810px;
+  position: absolute;
+  bottom: 0px;
+  border-radius: 8px;
+
+}*/
