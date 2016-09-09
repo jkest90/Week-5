@@ -1,0 +1,35 @@
+
+<div class="col-xs-12 col-sm-6 col-md-7">
+    <leaflet lf-center="alpha.center" markers="alpha.newMarkers"> </leaflet>
+</div>
+
+<div class="col-xs-12 col-sm-5 col-md-5" id="side">
+    <ul class="resultsList">
+        <li class="results" ng-repeat="result in alpha.getNextResults()">
+            <h5 class="artistHead"> {{result.Artist}} <h5>
+            <p> {{result.Venue}} </p>
+            <p>{{result.Address}}</p>
+            <p>{{result.Date | date }}</p>
+            <h6><a href={{result.TicketUrl}}> {{ result.TicketUrl | domain }}</a> </h6>
+            <button type="submit" ng-click="alpha.submitFollow(result)" class="btn btn-primary" id="FollowButton">{{result.Follow}}</button>
+        </li>  <!-- end results  -->
+    </ul>  <!-- end resultsList -->
+
+    <nav aria-label="Page navigation" class="col-xs-12" id="pageNumber">
+        <ul class="pagination">
+            <li ng-click="alpha.currentPage('-')">
+                <a href="#/" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-repeat="page in [1,2,3,4,5,6,7,8,9,10]" ng-click="alpha.currentPage(page)">
+                <a href="#/">{{ page }}</a>
+            </li>
+            <li ng-click="alpha.currentPage('+')">
+                <a href="#/" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>  <!-- end pagination -->
+</div> <!-- end 'side' div -->
