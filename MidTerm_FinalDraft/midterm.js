@@ -15,8 +15,8 @@ function Router($routeProvider) {
     .when('/', {
         templateUrl : '/templates/main.html',
     })
-    .when('/calendar', {
-        templateUrl : '/templates/calendar.html',
+    .when('/shows', {
+        templateUrl : '/templates/shows.html',
     })
     .when('/menu', {
         templateUrl : '/templates/menu.html',
@@ -89,7 +89,7 @@ function showCtrl(showFact) {                   //defining showCtrl function wit
     };//end alpha.currentPage()
 
     alpha.getNextResults = function() {
-        console.log(alpha.resultData[0].Follow);
+        // console.log(alpha.resultData[0].Follow);
         return alpha.resultData.slice(alpha.pageSize*(alpha.current-1), alpha.pageSize*alpha.current)
     }; //end alpha.getNextResults()
 
@@ -159,7 +159,7 @@ alpha.getResults = function() {
                 TicketUrl: element.TicketUrl,
                 Address: element.Venue.Address,
                 Artist: element.Artists[0].Name,
-                Follow: "Follow"                //create "follow" variable initially so that when the page loads it says follow. 
+                Follow: "Follow"                //create "follow" variable initially so that when the page loads it says follow.
             }) // end resultData.push()
         }) //end forEach()
     } //end if()
@@ -195,7 +195,7 @@ function showFact($http) {             //Defining showFact function with the $ht
 console.log('showFact:loaded')       //which uses $http to get show info from the Jambase API.
 return {
     getPage: function(num) {           //getPage is now a function that we can use in our controller.
-        return $http.get('http://api.jambase.com/events?zipCode=80203&radius=30&api_key=xtdm3yudej7rnptxxxhs2gww' + '&page=' + num)
+        return $http.get('http://api.jambase.com/events?zipCode=80203&radius=30&api_key=n584k856nbfh5vpkucrtf9nb' + '&page=' + num)
     }
 }
 };
@@ -214,6 +214,8 @@ alpha.showData.Events[0].Venue.Longitude  -Longitude
 */
 
 // Jambase Keys
-// stws3mexz3eeynujdsvw3p4n
 // xtdm3yudej7rnptxxxhs2gww
+
+
+// stws3mexz3eeynujdsvw3p4n
 // 7srane628g45btdnbxsxqn4v

@@ -1,9 +1,17 @@
 
-<div class="col-xs-12 col-sm-6 col-md-7">
-    <leaflet lf-center="alpha.center" markers="alpha.newMarkers"> </leaflet>
+<div class="col-xs-12">
+    <button class="btn btn-primary showButton"><a href=#/shows id="showText"> My Shows  <span class="glyphicon glyphicon-headphones"></span></a></button>
 </div>
 
+<div class="col-xs-12 col-sm-6 col-md-7">
+    <div class="leafMap">
+        <leaflet lf-center="alpha.center" markers="alpha.newMarkers"> </leaflet>
+    </div>
+</div>
+
+
 <div class="col-xs-12 col-sm-5 col-md-5" id="side">
+
     <ul class="resultsList">
         <li class="results" ng-repeat="result in alpha.getNextResults()">
             <h5 class="artistHead"> {{result.Artist}} <h5>
