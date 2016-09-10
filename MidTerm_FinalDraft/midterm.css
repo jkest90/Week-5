@@ -208,26 +208,37 @@ tr {
     padding: 19px;
     font-size: 17px;
     position: relative;
-    height: 28%;
-    line-height: 15px;
-    border: 0.9px solid;
+    height: 29%;
+    line-height: 13px;
+    border: 0.9px solid grey;
     border-radius: 30px;
     text-align: center;
     margin: 46px;
-    font-family: sans-serif;
+    font-family: monospace;
     background-color: rgba(222,222,222,.7);
     border: 1px solid grey;
 }
 
 #unfollowButton {
     position: absolute;
-    bottom:8px;
-    left: 109px;
+    bottom:10px;
+    left: 99px;
 }
 
 #submitList {
     overflow: auto;
     height: 700px;
+}
+
+#submitUrl {
+    right: 65px;
+    bottom: 56px;
+    position: absolute;
+}
+
+.submitRes {
+    font-size: 15px;
+    padding-top: 4px;
 }
 /*
 ng-map {
