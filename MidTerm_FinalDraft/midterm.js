@@ -97,94 +97,94 @@ function showCtrl(showFact) {                   //defining showCtrl function wit
 
     //start API Response 'then' promise
 
-showFact.getPage(0).then(function(response) {          //'then' method/promise. What do do AFTER we get the request from the API (asynchronous).
-    console.log('Response from server!', response);    //A function which returns the JSON data recieved from the server (below) and assigns it
-    alpha.showData = response.data;                    //to the variable showData.
-    alpha.getMarkers();
-    alpha.getResults();
-    console.log(alpha.resultData[0].Follow);
-    alpha.newMarkers = alpha.getNextMarkers();      //getting the first five markers from the array of 50
-});  //end 'then' promise
+    showFact.getPage(0).then(function(response) {          //'then' method/promise. What do do AFTER we get the request from the API (asynchronous).
+        console.log('Response from server!', response);    //A function which returns the JSON data recieved from the server (below) and assigns it
+        alpha.showData = response.data;                    //to the variable showData.
+        alpha.getMarkers();
+        alpha.getResults();
+        console.log(alpha.resultData[0].Follow);
+        alpha.newMarkers = alpha.getNextMarkers();      //getting the first five markers from the array of 50
+    });  //end 'then' promise
 
-alpha.currentMarkers = function(markerPage) {
-    alpha.current = markerPage
-};  //end alpha.currentMarkers()
+    alpha.currentMarkers = function(markerPage) {
+        alpha.current = markerPage
+    };  //end alpha.currentMarkers()
 
-alpha.submitData = [];
-alpha.submitFollow = function(result) {
-    if (alpha.submitData.indexOf(result) == -1){      //if this array has a result at some index it'll pass what the index is. indexOf is passed a value that is in an array and return its index.
-                                                    //alpha.resultData[alpha.submitData.indexOf(result)].Follow = "Unfollow";
-    result.Follow = 'Unfollow';
-    alpha.submitData.push(result)
-        } else {                                                                          //if its in the array, don't add this, if not, then add it.  ==-1 not in the array.
-    alpha.submitData.splice(alpha.submitData.indexOf(result),1);                //look at this index, delete it, and then give us that array back. remove that item and give us that array.
-    result.Follow = 'Follow';
-    //alpha.resultData[alpha.submitData.indexOf(result)].Follow = "Follow";
-    }
-} //end alpha.submitData()
-
-alpha.getNextMarkers = function() {
-    console.log(alpha.markers.slice((alpha.current-1)*(alpha.pageSize), alpha.pageSize*alpha.current));
-    return alpha.markers.slice((alpha.current-1)*(alpha.pageSize), alpha.pageSize*alpha.current).filter(function(element){
-        if (element.lat != 0 && element.lng != 0) {
-            return true
-        } else {
-            return false
+    alpha.submitData = [];
+    alpha.submitFollow = function(result) {
+        if (alpha.submitData.indexOf(result) == -1){      //if this array has a result at some index it'll pass what the index is. indexOf is passed a value that is in an array and return its index.
+                                                        //alpha.resultData[alpha.submitData.indexOf(result)].Follow = "Unfollow";
+        result.Follow = 'Unfollow';
+        alpha.submitData.push(result)
+            } else {                                                                          //if its in the array, don't add this, if not, then add it.  ==-1 not in the array.
+        alpha.submitData.splice(alpha.submitData.indexOf(result),1);                //look at this index, delete it, and then give us that array back. remove that item and give us that array.
+        result.Follow = 'Follow';
+        //alpha.resultData[alpha.submitData.indexOf(result)].Follow = "Follow";
         }
-    });   //end filter - removes markers with lat: 0, lng: 0
-};   //end alpha.getNextMarkers()
+    } //end alpha.submitData()
+
+    alpha.getNextMarkers = function() {
+        console.log(alpha.markers.slice((alpha.current-1)*(alpha.pageSize), alpha.pageSize*alpha.current));
+        return alpha.markers.slice((alpha.current-1)*(alpha.pageSize), alpha.pageSize*alpha.current).filter(function(element){
+            if (element.lat != 0 && element.lng != 0) {
+                return true
+            } else {
+                return false
+            }
+        });   //end filter - removes markers with lat: 0, lng: 0
+    };   //end alpha.getNextMarkers()
 
 
-alpha.getMarkers = function (result) {
-    if (alpha.showData && alpha.showData.Events) {
-        console.log("inside getmarkers");
-        alpha.showData.Events.forEach(function(element){
-            // if (element.Venue.Latitude !== 0 && element.Venue.Longitude !== 0) {  //able to access alpha.showData.Events with the 'element' parameter.
-            alpha.markers.push({
-                lat: element.Venue.Latitude,
-                lng: element.Venue.Longitude,
-                message: element.Artists[0].Name //how do I get multiple key-value JSON pairs into popup ?
-            }); //end markers.push()
-        }); //end forEach()
-    }; // end if()
-}; //end alpha.getMarkers()
+    alpha.getMarkers = function (result) {
+        if (alpha.showData && alpha.showData.Events) {
+            console.log("inside getmarkers");
+            alpha.showData.Events.forEach(function(element){
+                // if (element.Venue.Latitude !== 0 && element.Venue.Longitude !== 0) {  //able to access alpha.showData.Events with the 'element' parameter.
+                alpha.markers.push({
+                    lat: element.Venue.Latitude,
+                    lng: element.Venue.Longitude,
+                    message: element.Artists[0].Name //how do I get multiple key-value JSON pairs into popup ?
+                }); //end markers.push()
+            }); //end forEach()
+        }; // end if()
+    }; //end alpha.getMarkers()
 
 
-alpha.getResults = function() {
-    if (alpha.showData && alpha.showData.Events) {
-        alpha.showData.Events.forEach(function(element) {
-            alpha.resultData.push({
-                Venue: element.Venue.Name,
-                Date: element.Date,
-                TicketUrl: element.TicketUrl,
-                Address: element.Venue.Address,
-                Artist: element.Artists[0].Name,
-                Follow: "Follow"                //create "follow" variable initially so that when the page loads it says follow.
-            }) // end resultData.push()
-        }) //end forEach()
-    } //end if()
-}; //end alpha.getResults()
+    alpha.getResults = function() {
+        if (alpha.showData && alpha.showData.Events) {
+            alpha.showData.Events.forEach(function(element) {
+                alpha.resultData.push({
+                    Venue: element.Venue.Name,
+                    Date: element.Date,
+                    TicketUrl: element.TicketUrl,
+                    Address: element.Venue.Address,
+                    Artist: element.Artists[0].Name,
+                    Follow: "Follow"                //create "follow" variable initially so that when the page loads it says follow.
+                }) // end resultData.push()
+            }) //end forEach()
+        } //end if()
+    }; //end alpha.getResults()
 
-/* alternate 'for statements
-for (var i=0; i <alpha.showData.Events.length; i++)  {
-alpha.markers.push({lat: alpha.showData.Events[i].Venue.Latitude, lng: alpha.showData.Events[i].Venue.Longitude});
-}
+    /* alternate 'for statements
+    for (var i=0; i <alpha.showData.Events.length; i++)  {
+    alpha.markers.push({lat: alpha.showData.Events[i].Venue.Latitude, lng: alpha.showData.Events[i].Venue.Longitude});
+    }
 
-for (event in alpha.showData.Events) {
-var obj = alpha.showData.Events[event];
-console.log('event log' + event.Venue.Latitude)
-alpha.markers.push({lat: obj.Venue.Latitude, lng: obj.Venue.Longitude});
-} */
+    for (event in alpha.showData.Events) {
+    var obj = alpha.showData.Events[event];
+    console.log('event log' + event.Venue.Latitude)
+    alpha.markers.push({lat: obj.Venue.Latitude, lng: obj.Venue.Longitude});
+    } */
 
-alpha.defaults = {
-    scrollWheelZoom: false
-};
+    alpha.defaults = {
+        scrollWheelZoom: false
+    };
 
-alpha.center = {
-    lat: 39.750953,
-    lng: -104.983602,
-    zoom: 10
-}
+    alpha.center = {
+        lat: 39.750953,
+        lng: -104.983602,
+        zoom: 10.4
+    }
 };
 // End Show Controller
 
@@ -195,7 +195,7 @@ function showFact($http) {             //Defining showFact function with the $ht
 console.log('showFact:loaded')       //which uses $http to get show info from the Jambase API.
 return {
     getPage: function(num) {           //getPage is now a function that we can use in our controller.
-        return $http.get('http://api.jambase.com/events?zipCode=80203&radius=30&api_key=n584k856nbfh5vpkucrtf9nb' + '&page=' + num)
+        return $http.get('http://api.jambase.com/events?zipCode=80203&radius=30&api_key=mkpht3323fsvc5vb73qdt5g4' + '&page=' + num)
     }
 }
 };

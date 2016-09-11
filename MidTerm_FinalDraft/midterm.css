@@ -15,11 +15,17 @@ body {
     }
 }
 
-.leafMap {
-    overflow:hidden;
-    border-radius: 2px;
-    border-width: 3px;
+.angular-leaflet-map {
+    height: 630px;
+    width: 100%;
+    margin-top: 33px;
+    border-radius: 15px;
+    left: 10px;
 }
+.leaflet-container {
+    z-index: 0;
+}
+
 /*@media(min-width:970px) {
 #logoText {
 font-size:
@@ -117,12 +123,8 @@ float: left;
 padding-right: 10px
 }
 
-.angular-leaflet-map {
-    height: 600px;
-    width: 100%;
-    margin-top: 40px;
-    margin-left: 12px;
-}
+
+
 .container {
     position: relative
 }
